@@ -5,3 +5,6 @@ const loadPost = () =>{
     console.log(url);
 }
 loadPost();
+
+//7min 
+console.log(7)
