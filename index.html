@@ -9,6 +9,11 @@
 </head>
 <body>
     <h2 class="text-5xl">ph-9-m-6-conceptual-3-assignment-6</h2>
+    <div class="search-container">
+      <!-- <input type="text" placeholder="search by category"> -->
+      <input id="search-box" type="text" placeholder="search by category" class="input input-bordered w-full max-w-xs" />
+      <button onclick="handleSearch()" class="btn btn-secondary">Search</button>
+    </div>
 
     <!-- 
         B9A6-Retro-Forum
@@ -27,18 +32,34 @@
         PostByQuery: - https://openapi.programming-hero.com/api/retro-forum/posts?category=coding
      -->
 
-     <div class="card w-96 bg-base-100 shadow-xl">
-        <figure class="px-10 pt-10">
-          <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-        </figure>
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions">
-            <button class="btn btn-primary">Buy Now</button>
+     <div class="all-container flex justify-around">
+      <div class="product-container">
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <figure class="px-10 pt-10">
+            <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-actions">
+              <button class="btn btn-primary">Buy Now</button>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="cart-container">
+        <div class="cart-title flex p-5">
+          <h3 class="mr-5">Name</h3>
+          <h3 class="mr-5">Price</h3>
+        </div>
+        <hr>
+        <div class="cart">
+
+        </div>
+
+      </div>
+     </div>
     
 
 <script src="./app.js"></script>
