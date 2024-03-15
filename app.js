@@ -96,6 +96,7 @@ const loadAllProducts= async (qry) => {
         div.classList.add('bg-base-100');
         div.classList.add('shadow-xl');
         div.classList.add('mt-5');
+
         div.innerHTML = `
 
           <figure class="px-10 pt-10" >
@@ -129,7 +130,6 @@ const loadAllProducts= async (qry) => {
                 
                 <button onclick="addToCart('${itm.title}','${itm.price}')" class="btn btn-success">add-to-cart</button>
                 
-                
             </div>
         
         `
@@ -162,6 +162,22 @@ const addToCart =(name,price)=>{
     console.log(name,price);
     const dam = parseFloat(price);
     console.log(typeof dam,dam);
+
+    const singleCartInfo = document.getElementById('single-cart-info');
+    console.log(singleCartInfo);
+    // singleCartInfo.classList.add('justify-between')
+
+    const div = document.createElement('div');
+    div.classList.add('justify-between');
+    div.classList.add('flex');
+    div.classList.add('border-b-4');
+    div.classList.add('border-indigo-300');
+    div.innerHTML = `
+        <h4 class="mr-5 text-2xl w-1/2">${name}</h4>
+        <h4 class="mr-5 text-2xl w-1/3">${price}</h4>
+        <hr/>    
+    `
+    singleCartInfo.appendChild(div);
 
 }
 
