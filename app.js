@@ -36,11 +36,54 @@ const handleSearch = () =>{
 
 // loadPost();
 
-const loadAllProducts= async (qry='') => {
-    const url = `https://fakestoreapi.com/products${qry}`;
+const loadAllProducts= async (qry) => {
+    const loadingContainer = document.getElementById('loading-container');
+    loadingContainer.classList.remove('hidden')
+
+  
+
+    const url = `https://fakestoreapi.com/products/${qry}`;
     const res = await fetch(url);
     const data = await res.json();
+
+    // const loadingContainer = document.getElementById('loading-container');
+
+    if(data.length<=0){
+        alert('data not found.search proprely');
+        // const openModal = document.getElementById('open-modal');
+        // const div = document.createElement(div);
+        // div.innerHTML = `
+        // <!-- The button to open modal -->
+        // <label for="my_modal_6" class="btn">open modal</label>
+        
+        // <!-- Put this part before </body> tag -->
+        // <input type="checkbox" id="my_modal_6" class="modal-toggle" />
+        // <div class="modal" role="dialog">
+        //   <div class="modal-box">
+        //     <h3 class="font-bold text-lg">Hello!</h3>
+        //     <p class="py-4">This modal works with a hidden checkbox!</p>
+        //     <div class="modal-action">
+        //       <label for="my_modal_6" class="btn">Close!</label>
+        //     </div>
+        //   </div>
+        // </div>
+        
+        // `
+        // openModal.appendChild(div);
+        loadingContainer.classList.add('hidden')
+    }
+    else if(data.length > 0){
+        loadingContainer.classList.add('hidden')
+    }
+
+  
     console.log(data);
+    console.log('data length: ', data.length);
+    
+
+    setTimeout((
+            console.log('hi')
+    ),2000)
 
     const productContainer = document.getElementById('product-container');
     productContainer.innerHTML = ' ';
@@ -66,7 +109,7 @@ const loadAllProducts= async (qry='') => {
               <button class="btn btn-primary">${itm.category}</button>
             </div>
             <hr>
-            <div class="price-container">
+            <div class="price-container flex justify-around">
 
                 <div class="stats shadow">
                     <div class="stat">
@@ -83,7 +126,9 @@ const loadAllProducts= async (qry='') => {
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />450
                 </div>
 
-                <button class="btn btn-success">add-to-cart</button>
+                
+                <button onclick="addToCart('${itm.title}','${itm.price}')" class="btn btn-success">add-to-cart</button>
+                
                 
             </div>
         
@@ -97,7 +142,7 @@ const loadAllProducts= async (qry='') => {
 const handleSearch = () =>{
     const searchBoxValue = document.getElementById('search-box').value;
     console.log(searchBoxValue)
-    loadAllProducts(`/category/${searchBoxValue}`);
+    loadAllProducts(`category/${searchBoxValue}`);
 }
 
 /*
@@ -113,4 +158,13 @@ itemWiseProduct()
 */
 
 
-//45 min
+const addToCart =(name,price)=>{
+    console.log(name,price);
+    const dam = parseFloat(price);
+    console.log(typeof dam,dam);
+
+}
+
+loadAllProducts(' ');
+
+//1:08 min
